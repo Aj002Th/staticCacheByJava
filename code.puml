@@ -1,0 +1,47 @@
+@startuml StaticCache
+class LRUCache {
+- DoubleList<K,V> doubleList
+- Map<K,Node<K,V>> map
+- int CACHESIZE
++ void put(K,V)
++ V get(K)
++ Set<K> keySet()
++ {static} void main(String[])
+}
+class Main {
++ {static} void main(String[])
+}
+class MyDataloader {
+- ReadFromFile reader
+- String path
++ String getValue()
+}
+class ReadFromFile {
++ String readFileByLines(String)
+}
+interface DataGetter {
++ T getValue()
+}
+class Node {
+~ K k
+~ V v
+~ Node<K,V> next
+~ Node<K,V> prev
+}
+class DoubleList {
+~ Node<K,V> head
+~ Node<K,V> tail
++ void addLast(Node<K,V>)
++ void removeNode(Node<K,V>)
+}
+class StaticCache {
+- LRUCache<K,V> cache
+- Map<K,DataGetter<V>> getterMap
++ void set(K,DataGetter<V>)
++ V get(K)
++ Set<K> keySet()
+}
+
+
+DataGetter <|.. MyDataloader
+@enduml
