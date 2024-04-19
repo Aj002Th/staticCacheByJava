@@ -1,3 +1,4 @@
+' 实用 Plantuml 语法表示 类关系图
 @startuml StaticCache
 class LRUCache {
 - DoubleList<K,V> doubleList
